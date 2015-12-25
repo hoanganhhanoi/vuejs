@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>VueJS</title>
+  <link rel="stylesheet" href="app/assets/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="app/assets/css/style.css"/>
+</head>
+<body>
+
+  <div id="fake-nav">
+    <a href="#register" v-on:click="open('register', $event)">Register</a>
+    <a href="#login" v-on:click="open('login', $event)">Login</a>
+  </div>
+
+  <div class="user-modal-container" id="login-modal" v-on:click="close">
+    <div class="user-modal">
+      <ul class="form-switcher">
+        <li v-on:click="flip('register', $event)">
+          <a href="" id="register-form">Register</a>
+        </li>
+        <li v-on:click="flip('login', $event)">
+          <a href="" id="login-form">Login</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-register" id="form-register">
+      <div class="message" v-text="registerMessage"></div>
+      <input type="text" name="name" placeholder="Name" v-model="registerName" v-on:keyup.13="submit('register', $event)"/>
+      <input type="email" name="email" placeholder="Email" v-model="registerEmail" v-on:keyup.13="submit('register', $event)"/>
+      <input type="password" name="password" placeholder="Password" v-model="registerPassword" v-on:keyup.13="submit('register', $event)" />
+      <input type="submit" v-on:click="submit('testapi', $event)" v-model="registerSubmit" id="registerSubmit" />
+      <div class="links">
+        <a href="" v-on:click="flip('login', $event)">Already have an account? </a>
+      </div>
+    </div>
+
+    <div class="form-login" id="form-login">
+      <div class="message" v-text="loginMessage"></div>
+      <input type="text" name="user" placeholder="Email or Username" v-model="loginUser" v-on:keyup.13="submit('login', $event)" />
+      <input type="password" name="password" placeholder="Password" v-model="loginPassword" v-on:keyup.13="submit('login', $event)" />
+      <input type="submit" v-on:click="submit('login', $event)" v-model="loginSubmit" id="loginSubmit" />
+      <div class="links">
+        <a href="" v-on:click="flip('password', $event)">Forgot your password?</a>
+      </div>
+    </div>
+
+    <div class="form-password" id="form-password">
+      <div class="message" v-text="passwordMessage"></div>
+      <input type="text" name="email" placeholder="Email" v-model="passwordEmail" v-on:keyup.13="submit('password', $event)"/>
+      <input type="submit" v-on:click="submit('testapi', $event)" v-model="passwordSubmit" v-on:keyup="submit('password', $event)" />
+    </div>
+  </div>
+
+  <script type="text/javascript" src="app/assets/js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="app/assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="app/assets/js/vue.min.js"></script>
+  <script type="text/javascript" src="app/assets/js/vue-resource.js"></script>
+  <script type="text/javascript" src="app/assets/js/app.js"></script>
+</body>
+</html>
